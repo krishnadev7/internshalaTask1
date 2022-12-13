@@ -15,7 +15,7 @@ const Register = async (req, res) => {
       password: hashedPass,
     });
     const user = await newUser.save();
-    res.render('login');
+    // res.render('login');
     res.status(200).json(user);
   } catch (error) {
     console.log('error while submitting', { msg: error });
@@ -34,7 +34,7 @@ const Login = async(req, res) => {
       return res.status(400).json({msg: "Invalid Credentials !!!"});
     }
     const {password , ...others} = user._doc;
-    res.render('index');
+    // res.render('index');
     res.status(200).json(others);
 
   } catch (err) {
