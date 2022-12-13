@@ -12,11 +12,15 @@ app.set('view engine', 'ejs');
 
 // importing Routes components
 const loginRoute = require('./routes/auth');
+const postRoute = require('./routes/post')
 
 
 
 // routes for login and register function
 app.use('/api/auth', loginRoute);
+
+// routes for posts
+app.use('/api/post', postRoute);
 
 
 
