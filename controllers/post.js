@@ -70,4 +70,20 @@ const likePost = async (req, res) => {
 
 // ----xxx------- Like and disliking method function -----xxx-------//
 
-module.exports = { getPost, createPost, updatePost, deletePost, likePost };
+// --------------- Commenting the post -------------//
+const commentPost = async(req,res) => {
+    try {
+        const comment = {
+            text : req.body.text,
+            userId : req.body.userId
+        }
+        const post = await Post.findById(req.params.id);
+        await post.updateOne({$push: {comments: comment}})
+        res.status(200).json("You commented on this post")
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+// -----xxx-------- Commenting the post -----xxx------//
+
+module.exports = { getPost, createPost, updatePost, deletePost, likePost,commentPost};
