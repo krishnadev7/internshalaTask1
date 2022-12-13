@@ -1,5 +1,5 @@
 const express = require('express');
-const {getPost, createPost, updatePost, deletePost} = require('../controllers/post');
+const {getPost, createPost, updatePost, deletePost, likePost} = require('../controllers/post');
 const router = express.Router();
 
 //------------ CRUD operation API'S-------------//
@@ -16,6 +16,9 @@ router.put('/:id', updatePost)
 // Deleting post method
 router.delete('/:id', deletePost)
 
-//-----xxx----- CRUD operation API'S----xxx-----//
+
+//------------- Like & Dislike API'S -----------//
+router.put('/:id/like',likePost)
+
 
 module.exports = router
