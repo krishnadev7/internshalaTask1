@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 8800
 dotenv.config();
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('view engine', 'ejs');
 
 // importing Routes components
 const loginRoute = require('./routes/auth');
@@ -23,28 +22,6 @@ app.use('/api/auth', loginRoute);
 app.use('/api/post', postRoute);
 
 
-
-
-// Routes for ejs pages
-app.get('/',(req,res) => {
-    res.render("index.ejs")
-})
-
-app.get('/login', (req,res) => {
-    res.render("login.ejs")
-})
-
-app.get('/register', (req,res) => {
-    res.render("register.ejs")
-})
-
-app.get('/forgot-password', (req,res) => {
-    res.render("forgotPassword.ejs")
-})
-
-app.get('/resetPassword', (req,res) => {
-    res.render("resetPassword")
-})
 
 // MongoDb connection
 const Connect = async() => {
